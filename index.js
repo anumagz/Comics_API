@@ -25,6 +25,13 @@ app.get('/comics', async (req, res, next) => {
   res.send(comics)
 })
 
+
+app.get('/characters_db', async (req, res, next) => {
+
+  let characters_db = await client.query('SELECT * FROM characters_db', [])
+
+  res.send(characters_db)
+})
 app.delete('/comics/:id', async (req, res, next) => {
   console.log(req.params.id)
   try {
@@ -53,7 +60,7 @@ app.get('/comics/:id', async (req, res, next) => {
 })
 app.post('/comics', async (req, res, next) => {
   try {
-    let comics = await client.query('insert into comics("Title","Genre","Status","Author") values ($1,$2,$3,$4)', [req.body.title, req.body.genre, req.body.status, req.body.author])
+    let comics = await client.query('insert into comics("Title","Genre","Status","Author") values ($1,$2,$3,$4)', [req.body.Title, req.body.Genre, req.body.Status, req.body.Author])
     res.send('Successfully created comics')
   } catch (err) {
     console.log(err)
