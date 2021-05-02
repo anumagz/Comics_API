@@ -5,12 +5,9 @@ const app = express()
 const port = 3000
 
 const { Client } = require('pg')
+const connectionString =  process.env.DATABASE_URL //'postgresql://postgres:postgres@localhost:5432/postgres'
 const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'postgres',
-  password: 'postgres',
-  port: 5432,
+  connectionString,
 })
 client.connect()
 
