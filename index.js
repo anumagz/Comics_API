@@ -5,7 +5,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 const { Client } = require('pg')
-const connectionString =  process.env.DATABASE_URL+'?ssl=true' || 'postgresql://postgres:postgres@localhost:5432/postgres'
+const connectionString =  process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/postgres'
 const client = new Client({
   connectionString,
 })
